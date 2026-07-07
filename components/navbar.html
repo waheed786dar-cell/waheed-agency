@@ -1,0 +1,40 @@
+<--analyzer-output ========================================================
+     REUSABLE NAVBAR COMPONENT
+     Copy this block into every page's <body>, right after <body> tag.
+     Update the "active" class on the matching .navbar-link for each page.
+======================================================== -->
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="navbar-brand">
+      <span>Waheed Agency</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="/" class="navbar-link">Home</a></li>
+        <li><a href="/pages/about.html" class="navbar-link">About</a></li>
+        <li class="navbar-dropdown">
+          <a href="/pages/services/index.html" class="navbar-link">Services</a>
+          <div class="navbar-dropdown-menu">
+            <a href="/pages/services/web-development.html" class="navbar-dropdown-item">Web Development</a>
+            <a href="/pages/services/app-development.html" class="navbar-dropdown-item">App Development</a>
+            <a href="/pages/services/ui-ux-design.html" class="navbar-dropdown-item">UI/UX Design</a>
+            <a href="/pages/services/seo-marketing.html" class="navbar-dropdown-item">SEO & Marketing</a>
+            <a href="/pages/services/cloud-devops.html" class="navbar-dropdown-item">Cloud & DevOps</a>
+          </div>
+        </li>
+        <li><a href="/pages/portfolio/index.html" class="navbar-link">Portfolio</a></li>
+        <li><a href="/pages/blog.html" class="navbar-link">Blog</a></li>
+        <li><a href="/pages/contact.html" class="navbar-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+      <a href="/pages/contact.html" class="btn btn-primary btn-sm hide-mobile">Get a Quote</a>
+      <button class="navbar-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
