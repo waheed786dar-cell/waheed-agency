@@ -72,6 +72,7 @@ def main():
   <script src="/js/modules/animations.js" defer></script>
   <script src="/js/modules/form-handler.js" defer></script>
   <script src="/js/modules/lazy-load.js" defer></script>
+  <script src="/js/modules/faq-accordion.js" defer></script>
   <script src="/js/main.js" defer></script>
 </body>
 </html>
