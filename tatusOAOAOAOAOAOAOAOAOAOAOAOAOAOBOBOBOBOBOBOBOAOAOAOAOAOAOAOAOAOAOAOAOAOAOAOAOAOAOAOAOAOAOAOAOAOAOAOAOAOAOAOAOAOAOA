@@ -1,0 +1,5 @@
+[33m1e608f2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m fix: properly resolve relative paths for GitHub Pages subfolder + Vercel root compatibility
+[33m7b59a28[m feat: add issue templates, PR template, and CODEOWNERS
+[33m62601b0[m fix: convert absolute paths to relative for GitHub Pages + Vercel compatibility
+[33mb8bf164[m feat: add lint-check, CodeQL, Lighthouse, and changelog workflows
+[33mbfb715a[m feat: add Vercel deploy workflow, dependabot config, update gitignore
