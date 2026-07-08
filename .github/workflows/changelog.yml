@@ -1,0 +1,52 @@
+name: Auto Changelog
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update-changelog:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'chore: update changelog')"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate changelog entry
+        run: |
+          DATE=$(date +'%Y-%m-%d')
+          COMMIT_MSG="${{ github.event.head_commit.message }}"
+          COMMIT_SHA="${{ github.sha }}"
+          SHORT_SHA=${COMMIT_SHA:0:7}
+
+          if [ ! -f CHANGELOG.md ] || [ ! -s CHANGELOG.md ]; then
+            echo "# Changelog" > CHANGELOG.md
+            echo "" >> CHANGELOG.md
+          fi
+
+          TEMP_FILE=$(mktemp)
+          echo "# Changelog" > "$TEMP_FILE"
+          echo "" >> "$TEMP_FILE"
+          echo "## $DATE - $SHORT_SHA" >> "$TEMP_FILE"
+          echo "- $COMMIT_MSG" >> "$TEMP_FILE"
+          echo "" >> "$TEMP_FILE"
+          tail -n +2 CHANGELOG.md >> "$TEMP_FILE" 2>/dev/null || true
+          mv "$TEMP_FILE" CHANGELOG.md
+
+      - name: Commit changelog
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add CHANGELOG.md
+          git diff --staged --quiet && echo "No changes" || git commit -m "chore: update changelog"
+
+      - name: Push changes
+        run: |
+          git push origin main || echo "Push skipped - protected branch or no changes"
+        continue-on-error: true

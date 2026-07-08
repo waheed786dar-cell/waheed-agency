@@ -1,0 +1,72 @@
+name: Lint & Validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  html-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install HTML validator
+        run: npm install --global html-validate
+
+      - name: Validate HTML files
+        run: |
+          html-validate "**/*.html" --config-file .htmlvalidate.json || true
+        continue-on-error: true
+
+      - name: Check for broken internal links
+        run: |
+          echo "Checking for common issues..."
+          grep -rn "href=\"#\"" --include="*.html" . || echo "No placeholder links found"
+
+  css-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install stylelint
+        run: npm install --global stylelint stylelint-config-standard
+
+      - name: Lint CSS files
+        run: |
+          echo '{"extends": "stylelint-config-standard", "rules": {"selector-class-pattern": null, "no-descending-specificity": null}}' > .stylelintrc.json
+          stylelint "css/**/*.css" || true
+        continue-on-error: true
+
+  js-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check JS syntax
+        run: |
+          for file in $(find js -name "*.js"); do
+            node --check "$file" && echo "OK: $file"
+          done

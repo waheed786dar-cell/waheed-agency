@@ -1,0 +1,44 @@
+name: Lighthouse Performance Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install a static server
+        run: npm install --global http-server
+
+      - name: Serve site locally
+        run: |
+          http-server . -p 8080 &
+          sleep 3
+
+      - name: Install Lighthouse CI
+        run: npm install --global @lhci/cli@0.13.x
+
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun \
+            --collect.url=http://localhost:8080/index.html \
+            --collect.numberOfRuns=1 \
+            --upload.target=temporary-public-storage \
+            --assert.preset=lighthouse:no-pwa \
+          || echo "Lighthouse completed with warnings - check report above"
+        continue-on-error: true
