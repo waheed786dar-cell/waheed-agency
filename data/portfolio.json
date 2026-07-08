@@ -1,0 +1,26 @@
+{
+  "projects": [
+    {
+      "id": "placeholder-1",
+      "title": "Project Coming Soon",
+      "category": "web",
+      "image": "/assets/images/portfolio/placeholder-1.jpg",
+      "status": "placeholder"
+    },
+    {
+      "id": "placeholder-2",
+      "title": "Project Coming Soon",
+      "category": "app",
+      "image": "/assets/images/portfolio/placeholder-2.jpg",
+      "status": "placeholder"
+    },
+    {
+      "id": "placeholder-3",
+      "title": "Project Coming Soon",
+      "category": "design",
+      "image": "/assets/images/portfolio/placeholder-3.jpg",
+      "status": "placeholder"
+    }
+  ],
+  "note": "Replace with real projects as they are completed. Update category filter values (web/app/design) to match actual work."
+}

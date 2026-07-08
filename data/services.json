@@ -1,0 +1,39 @@
+{
+  "services": [
+    {
+      "id": "web-development",
+      "title": "Web Development",
+      "icon": "Web",
+      "shortDesc": "Fast, secure, SEO-ready websites built with modern best practices.",
+      "url": "/pages/services/web-development.html"
+    },
+    {
+      "id": "app-development",
+      "title": "App Development",
+      "icon": "App",
+      "shortDesc": "Native and cross-platform mobile apps engineered for performance and scale.",
+      "url": "/pages/services/app-development.html"
+    },
+    {
+      "id": "ui-ux-design",
+      "title": "UI/UX Design",
+      "icon": "Design",
+      "shortDesc": "Interfaces that are beautiful, intuitive, and built to convert.",
+      "url": "/pages/services/ui-ux-design.html"
+    },
+    {
+      "id": "seo-marketing",
+      "title": "SEO & Marketing",
+      "icon": "SEO",
+      "shortDesc": "Data-driven strategies that improve rankings and visibility.",
+      "url": "/pages/services/seo-marketing.html"
+    },
+    {
+      "id": "cloud-devops",
+      "title": "Cloud & DevOps",
+      "icon": "Cloud",
+      "shortDesc": "Scalable infrastructure, automated CI/CD pipelines, dependable uptime.",
+      "url": "/pages/services/cloud-devops.html"
+    }
+  ]
+}

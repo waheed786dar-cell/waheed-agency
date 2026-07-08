@@ -1,0 +1,13 @@
+{
+  "team": [
+    {
+      "name": "Waheed Hanif Dahar",
+      "role": "Founder & Developer",
+      "image": "/assets/images/team/founder.jpg",
+      "bio": "Self-taught full-stack developer specializing in web, mobile, and cloud infrastructure.",
+      "social": {
+        "github": "https://github.com/waheed786dar-cell"
+      }
+    }
+  ]
+}
