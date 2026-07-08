@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /docs/
+Disallow: /scripts/
+Disallow: /.github/
+
+Sitemap: https://waheed786dar-cell.github.io/waheed-agency/sitemap.xml
